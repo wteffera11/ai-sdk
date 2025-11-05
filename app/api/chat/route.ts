@@ -1,5 +1,5 @@
 import { createResource } from '@/lib/actions/resources';
-import { openai } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import {
     convertToModelMessages,
     streamText,
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
 
     const result = streamText({
-        model: openai('gpt-3.5-turbo'),
+        model: google('gemini-2.5-flash'),
         messages: convertToModelMessages(messages),
         stopWhen: stepCountIs(5),
         system: `You are a helpful assistant. Check your knowledge base before answering any questions.
